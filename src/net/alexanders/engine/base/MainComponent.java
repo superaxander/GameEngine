@@ -12,6 +12,7 @@ public class MainComponent
 
     public MainComponent()
     {
+        RenderUtils.initGraphics();
         this.isRunning = false;
         this.game = new Game();
     }
@@ -96,6 +97,7 @@ public class MainComponent
 
     private void render()
     {
+        RenderUtils.clearScreen();
         game.render();
         Window.render();
     }
