@@ -1,6 +1,7 @@
 package net.alexanders.engine.base;
 
 import org.lwjgl.*;
+import org.lwjgl.input.*;
 import org.lwjgl.opengl.*;
 
 public class Window
@@ -10,6 +11,8 @@ public class Window
         try{
             Display.setDisplayMode(new DisplayMode(width, height));
             Display.create();
+            Keyboard.create();
+            Mouse.create();
         }catch(LWJGLException e){
             e.printStackTrace();
             Display.destroy();
@@ -20,6 +23,13 @@ public class Window
     public static void render()
     {
         Display.update();
+    }
+
+    public static void destroy()
+    {
+        Display.destroy();
+        Keyboard.destroy();
+        Mouse.destroy();
     }
 
     public static boolean isCloseRequested()
