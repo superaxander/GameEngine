@@ -58,8 +58,10 @@ public class Game
     public void update()
     {
        temp += Time.getDelta();
-       //transform.setTranslation((float)Math.sin(temp),0,0);//+transform.getTranslation().getX(), transform.getTranslation().getY(), transform.getTranslation().getZ());
+       transform.setTranslation((float)Math.sin(temp),0,0);//+transform.getTranslation().getX(), transform.getTranslation().getY(), transform.getTranslation().getZ());
        transform.setRotation(0, 0, (float)Math.sin(temp)*180f);
+       float tmp = (float)Math.sin(temp);
+       transform.setScale(tmp > 0 ? tmp : -tmp, tmp > 0 ? tmp : -tmp, 0);
     }
 
     public void render()
