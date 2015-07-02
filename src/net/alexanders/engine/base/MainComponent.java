@@ -1,5 +1,9 @@
 package net.alexanders.engine.base;
 
+import net.alexanders.engine.interaction.*;
+import net.alexanders.engine.render.*;
+import net.alexanders.engine.util.*;
+
 public class MainComponent
 {
     public static final int WIDTH = 800;
@@ -12,7 +16,8 @@ public class MainComponent
 
     public MainComponent()
     {
-        RenderUtils.initGraphics();
+        System.out.println(RenderUtil.getOpenGLVersion());
+        RenderUtil.initGraphics();
         this.isRunning = false;
         this.game = new Game();
     }
@@ -97,7 +102,7 @@ public class MainComponent
 
     private void render()
     {
-        RenderUtils.clearScreen();
+        RenderUtil.clearScreen();
         game.render();
         Window.render();
     }

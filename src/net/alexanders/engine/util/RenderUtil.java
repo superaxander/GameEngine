@@ -1,14 +1,13 @@
-package net.alexanders.engine.base;
+package net.alexanders.engine.util;
 
-import org.lwjgl.opengl.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL30.*;
 
-public class RenderUtils
+public class RenderUtil
 {
     public static void clearScreen(){
         //TODO: stencil buffer
-        GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 
     public static void initGraphics(){
@@ -19,6 +18,11 @@ public class RenderUtils
         glEnable(GL_DEPTH_TEST);
         //TODO: Depth Clamp
 
-        GL11.glEnable(GL_FRAMEBUFFER_SRGB);
+        glEnable(GL_FRAMEBUFFER_SRGB);
+    }
+
+    public static String getOpenGLVersion()
+    {
+        return glGetString(GL_VERSION);
     }
 }

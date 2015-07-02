@@ -1,4 +1,6 @@
-package net.alexanders.engine.base;
+package net.alexanders.engine.render;
+
+import org.lwjgl.opengl.*;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL15.*;
@@ -20,7 +22,7 @@ public class Mesh
         size = vertices.length * Vertex.SIZE;
 
         glBindBuffer(GL_ARRAY_BUFFER, vbo);
-        glBufferData(GL_ARRAY_BUFFER, Util.createFlippedBuffer(vertices), GL_STATIC_DRAW);
+        GL15.glBufferData(GL_ARRAY_BUFFER, net.alexanders.engine.util.Util.createFlippedBuffer(vertices), GL_STATIC_DRAW);
     }
 
     public void draw()

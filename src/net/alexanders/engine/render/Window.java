@@ -1,4 +1,4 @@
-package net.alexanders.engine.base;
+package net.alexanders.engine.render;
 
 import org.lwjgl.*;
 import org.lwjgl.input.*;
