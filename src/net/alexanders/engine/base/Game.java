@@ -29,7 +29,8 @@ public class Game
             shader.addUniform("colorIn");
             shaders.add(shader);
             Transform transform = new Transform();
-            transform.setScale(0.2f, 0.2f, 0.2f);
+            Transform.setProjection(70f, MainComponent.WIDTH, MainComponent.HEIGHT, 0.1f, 1000f);
+            transform.setTranslation(0, 0, 8);
             transforms.add(transform);
             shader.addUniform("transform");
             colors.add(new Vector3f(Util.randomInRange(0.2f, 0.8f), Util.randomInRange(0.2f, 0.8f), Util.randomInRange(0.2f, 0.8f)));
@@ -85,6 +86,7 @@ public class Game
        for(Transform transform : transforms){
            //transform.setTranslation((float)Math.sin(temp),0,0);//+transform.getTranslation().getX(), transform.getTranslation().getY(), transform.getTranslation().getZ());
            transform.setRotation((float)Math.abs(Math.cos(temp2)) * 150f, (float)Math.abs(Math.sin(temp)) * 360f, 0);
+           //transform.setScale(0.5f, 0.5f, 0.5f);
            //float tmp = (float)Math.sin(temp);
            //transform.setScale(tmp > 0 ? tmp : -tmp, tmp > 0 ? tmp : -tmp, 0);
        }
@@ -95,8 +97,8 @@ public class Game
         for(int i = 0; i < shaders.size(); i++){
             Shader shader = shaders.get(i);
             shader.bind();
-            shader.setUniform("colorIn", colors.get(i));
-            shader.setUniform("transform", transforms.get(i).getTransformation());
+            shader.setUniform("colorIn", new Vector3f(colors.get(i).getX() * (float)Math.abs(Math.tan(temp)), colors.get(i).getY() * (float)Math.abs(Math.sin(temp)), colors.get(i).getZ() * (float)Math.abs(Math.cos(temp))));
+            shader.setUniform("transform", transforms.get(i).getProjectedTransformation());
             meshes.get(i).draw();
         }
         //shader.setUniform("colorIn", new Vector3f((float)Math.sin(temp), (float)Math.cos(temp), (float)Math.abs(Math.sin(temp))));
